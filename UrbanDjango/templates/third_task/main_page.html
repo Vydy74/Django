@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atoom - Главная</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #bbb;
+        }
+
+        .description {
+            padding: 40px;
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .icon-container {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .icon-container img {
+            width: 128px;
+            height: 128px;
+            cursor: pointer;
+            background-color: #999999;
+            border-radius: 50%;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            border-radius: 5px;
+        }
+
+        .icon-container img:hover + .tooltip {
+            display: block;
+        }
+
+        .left-icons {
+            left: 10px;
+            bottom: 10px;
+        }
+
+        .right-icons {
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .dialog {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 10px;
+            width: 300px;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            font-size: 1em;
+        }
+
+        .dialog p {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .dialog button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .achievements, .why-us {
+            width: 300px;
+            height: 300px;
+            background-color: #99cc33;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            overflow-wrap: break-word;
+            position: absolute;
+            top: 300px;
+        }
+
+        .achievements {
+            left: 10px;
+        }
+
+        .why-us {
+            right: 10px;
+        }
+
+        .reviews {
+            margin-top: 400px;
+            margin-bottom: 150px;
+        }
+
+        .reviews blockquote {
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #eee;
+            border-left: 5px solid #333;
+            max-width: 600px;
+            font-size: 1em;
+            text-align: left;
+        }
+
+        .reviews footer {
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+    <script>
+        function toggleDialog() {
+            const dialog = document.getElementById('bot-dialog');
+            dialog.style.display = dialog.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Atoom</h1>
+    </header>
+
+    <nav>
+        <a href="#">Главная страница</a>
+        <a href="/store_page/">Магазин</a>
+        <a href="/basket_page/">Корзина</a>
+        <a href="/contact_page/">Контакты</a>
+    </nav>
+
+    <section class="description">
+        <p>
+            Компания <strong>Atoom</strong> родилась на заре эры человечества, когда первобытные люди впервые осознали, что "могло бы быть и лучше".
+            Мы стремимся улучшать вашу жизнь всеми возможными (и невозможными) способами. У нас вы найдете все, что вам не нужно, но вы обязательно захотите что нибудь купить!
+        </p>
+    </section>
+
+    <section class="achievements">
+        <h2>Наши достижения</h2>
+        <ul>
+            <li>Продали 10 000 пар носков с ракетами за одну неделю!</li>
+            <li>Наши клиенты летают выше всех (буквально).</li>
+            <li>Нас любят даже боты, потому что мы всегда на их стороне.</li>
+        </ul>
+    </section>
+
+    <section class="why-us">
+        <h2>Почему именно мы?</h2>
+        <p>Мы точно знаем, что вам нужно. Даже если вы об этом ещё не догадывались.</p>
+        <p>У нас можно купить шляпу, которая поднимет вашу самооценку. И да, она светится.</p>
+    </section>
+
+    <section class="reviews">
+        <h2>Отзывы наших клиентов</h2>
+        <blockquote>
+            <p>Купил магическую шляпу, теперь соседи меня боятся. Спасибо, Atoom!</p>
+            <footer>— Иван П., волшебник-любитель</footer>
+        </blockquote>
+        <blockquote>
+            <p>Шар предсказаний оказался слишком честным. Сказал мне, что пора менять работу.</p>
+            <footer>— Мария К., фрилансер</footer>
+        </blockquote>
+    </section>
+
+    <div class="icon-container left-icons">
+        <img src="/static/img/telega.png" alt="Telegram Icon" title="Telegram" onclick="window.open('https://t.me/yourchannel', '_blank')">
+        <span class="tooltip">Наш Telegram-канал</span>
+    </div>
+
+    <div class="icon-container right-icons">
+        <img src="/static/img/bot.png" alt="Bot Icon" title="Chat Bot" onclick="toggleDialog()">
+        <span class="tooltip">Вызвать бота</span>
+    </div>
+
+    <div id="bot-dialog" class="dialog">
+        <p>Здравствуйте, я ваш персональный помощник. Я могу ответить на все ваши вопросы, но я слишком ленив, поэтому разбирайтесь сами.</p>
+        <button onclick="toggleDialog()">Закрыть</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        header .sub-title {
+            font-size: 1.5em;
+            color: #ccc;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #bbb;
+        }
+
+
+        .icon-container {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .icon-container img {
+            width: 128px;
+            height: 128px;
+            cursor: pointer;
+            background-color: #999999;
+            border-radius: 50%;
+        }
+
+        .icon-container.left-icons {
+            left: 10px;
+            bottom: 10px;
+        }
+
+        .icon-container.right-icons {
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .store-container {
+            margin: 50px auto;
+            width: 1280px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product img {
+            width: 128px;
+            height: 128px;
+            background-color: #999999;
+            border-radius: 10px;
+        }
+
+        .product-description {
+            flex-grow: 1;
+            text-align: left;
+            margin: 0 20px;
+        }
+
+        .product button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product button:hover {
+            background-color: #218838;
+        }
+        .dialog {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 10px;
+            width: 300px;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            font-size: 1em;
+        }
+
+        .dialog p {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .dialog button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function purchaseItem(itemName) {
+            alert(`Лучше переведи мне эти
+            деньги на счет, если карман жгут:`);
+        }
+    </script>
+    <script>
+        function toggleDialog() {
+            const dialog = document.getElementById('bot-dialog');
+            dialog.style.display = dialog.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Atoom</h1>
+        <div class="sub-title">Корзина</div>
+    </header>
+
+    <nav>
+        <a href="/">Главная страница</a>
+        <a href="/store_page/">Магазин</a>
+        <a href="/basket_page/">Корзина</a>
+        <a href="/contact_page/">Контакты</a>
+    </nav>
+
+    <div class="icon-container left-icons">
+        <img src="/static/img/telega.png" alt="Telegram Icon" onclick="window.open('https://t.me/yourchannel', '_blank')">
+    </div>
+
+    <div class="icon-container right-icons">
+        <img src="/static/img/bot.png" alt="Bot Icon" title="Chat Bot" onclick="toggleDialog()">
+        <span class="tooltip">Вызвать бота</span>
+    </div>
+
+    <div id="bot-dialog" class="dialog">
+        <p>Что же вы никак не успокоетесь, ручками сучите. Я вам не попугай, отвечать постоянно одно и то же.</p>
+        <button onclick="toggleDialog()">Закрыть</button>
+    </div>
+
+    <div class="store-container">
+        <!-- Начало списка товаров -->
+        <div class="product">
+            <img src="/static/img/Path_for_eye.png" alt="Product 1">
+            <div class="product-description">
+                <h3>Повязка на левый глаз</h3>
+                <p>+3 к интеллекту, вскрывает покровы сущего. Отличный аксессуар для приключенцев.</p>
+            </div>
+            <button onclick="purchaseItem('Повязка на левый глаз')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/teeth_croc.png" alt="Product 2">
+            <div class="product-description">
+                <h3>Зубы крокодила</h3>
+                <p>Теперь от вашей улыбки люди замирают, в буквальном смысле.</p>
+            </div>
+            <button onclick="purchaseItem('Зубы крокодила')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/alladin_hat.png" alt="Product 3">
+            <div class="product-description">
+                <h3>Шляпа из лампы Аладдина</h3>
+                <p>Носите ее, и люди загадывают желания, но выполняете их вы.</p>
+            </div>
+            <button onclick="purchaseItem('Шляпа из лампы Аладдина')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/gloves.png" alt="Product 4">
+            <div class="product-description">
+                <h3>Перчатки дружбы</h3>
+                <p>Каждый, с кем вы пожмете руку, становится вашим лучшим
+                    другом на 24 часа (иногда слишком навязчивым).</p>
+            </div>
+            <button onclick="purchaseItem('Перчатки дружбы')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/coffee.png" alt="Product 5">
+            <div class="product-description">
+                <h3>Кофейный амулет бодрости</h3>
+                <p> +5 к энергии, но цена — ваше спокойствие.</p>
+            </div>
+            <button onclick="purchaseItem('Кофейный амулет бодрости')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/socks.png" alt="Product 6">
+            <div class="product-description">
+                <h3>Носки антигравитации</h3>
+                <p>Прыгнуть выше можно, но спуститься — уже проблема.</p>
+            </div>
+            <button onclick="purchaseItem('Носки антигравитации')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/glasses.png" alt="Product 7">
+            <div class="product-description">
+                <h3>Очки правды</h3>
+                <p>Становится видно, кто лукавит... даже вы сами.</p>
+            </div>
+            <button onclick="purchaseItem('Очки правды')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/book.png" alt="Product 8">
+            <div class="product-description">
+                <h3>Книга "Заклинания для ленивых"</h3>
+                <p> Заклинания срабатывают, если произнести их неправильно.</p>
+            </div>
+            <button onclick="purchaseItem('Книга 'Заклинания для ленивых')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/culon.png" alt="Product 9">
+            <div class="product-description">
+                <h3>Кулон мгновенной популярности</h3>
+                <p> Люди окружают вас, но только ради ваших шуток. (Но шутки уже кончились!)</p>
+            </div>
+            <button onclick="purchaseItem('Кулон мгновенной популярности')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/undo.png" alt="Product 10">
+            <div class="product-description">
+                <h3>Кнопка "Отменить"</h3>
+                <p> Работает один раз, но только если вы о ней забудете.</p>
+            </div>
+            <button onclick="purchaseItem('Кнопка Отменить')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/rhyming_pen.png" alt="Product 11">
+            <div class="product-description">
+                <h3>Перо рифмоплета</h3>
+                <p>Каждый ваш текст автоматически превращается в песню. Минус — навязчивые мелодии в голове.</p>
+            </div>
+            <button onclick="purchaseItem('Перо рифмоплета')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/backpack.png" alt="Product 12">
+            <div class="product-description">
+                <h3>Рюкзак бездонного кармана</h3>
+                <p>Все вмещается, но доставать вещи приходится долго (он сам решает доставать или нет).</p>
+            </div>
+            <button onclick="purchaseItem('Рюкзак бездонного кармана')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/clock.png" alt="Product 13">
+            <div class="product-description">
+                <h3>Часы вечного опоздания</h3>
+                <p>Показывают неправильное время, но все всегда вас ждут.</p>
+            </div>
+            <button onclick="purchaseItem('Часы вечного опоздания')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/cap_time.png" alt="Product 14">
+            <div class="product-description">
+                <h3>Кружка для чая времени</h3>
+                <p>Чай всегда теплый, но пить его можно только через час.</p>
+            </div>
+            <button onclick="purchaseItem('Кружка для чая времени')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/cauldron_of_ideas.png" alt="Product 15">
+            <div class="product-description">
+                <h3>Котелок воплощения идей </h3>
+                <p>Сначала он кипит, потом идеи исполняются, но не всегда так, как вы задумывали.</p>
+            </div>
+            <button onclick="purchaseItem('Котелок воплощения идей')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/flute.png" alt="Product 15">
+            <div class="product-description">
+                <h3>Флейта тишины</h3>
+                <p> Звуки вокруг исчезают, но играет флейта, и только вы ее слышите.</p>
+            </div>
+            <button onclick="purchaseItem('Флейта тишины')">Оплатить</button>
+        </div>
+
+        <div class="product">
+            <img src="/static/img/scarf.png" alt="Product 16">
+            <div class="product-description">
+                <h3>Шарф невидимости</h3>
+                <p>Делает вас невидимым, но только в плохую погоду. А король то голый!</p>
+            </div>
+            <button onclick="purchaseItem('Шарф невидимости')">Оплатить</button>
+        </div>
+
+        <!-- Конец списка товаров -->
+    </div>
+</body>
+</html>

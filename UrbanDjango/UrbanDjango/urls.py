@@ -18,9 +18,14 @@ from django.contrib import admin
 from django.urls import path
 
 from task2.views import function_base_view, ClassBaseView
+from task3.views import main_page_view, store_page_view, basket_page_view, contacts_page_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('task2/', function_base_view),
     path('classes/', ClassBaseView.as_view()),
+    path('', main_page_view),
+    path('store_page/', store_page_view),
+    path('basket_page/', basket_page_view),
+    path('contact_page/', contacts_page_view),
 ]
