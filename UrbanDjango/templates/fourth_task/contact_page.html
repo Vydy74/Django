@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type = text/css href = "{% static 'style.css' %}">
+    <title>Atoom - Контакты</title>
+
+    <script>
+        function toggleDialog() {
+            const dialog = document.getElementById('bot-dialog');
+            dialog.style.display = dialog.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Контакты</h1>
+    </header>
+
+    <nav>
+        <a href="/">Главная страница</a>
+        <a href="/store_page/">Магазин</a>
+        <a href="/basket_page/">Корзина</a>
+        <a href="/contact_page/">Контакты</a>
+    </nav>
+
+    <section class="description">
+        <p>
+            Здесь пока ничего нет. Потому что, мы уже все украли и скрываемся. Если вы хотите дать нам
+            немного денег, свяжитесь с нами по адресу <a href="https://www.vsrf.ru/">tutavse@gmail.com</a>
+        </p>
+    </section>
+
+    <section class="achievements">
+        <h2>----- Наши достижения -----</h2>
+        <h2>-------------------------------------</h2>
+        <ul>
+            <li>Продали 10 000 пар носков с ракетами за одну неделю!</li>
+            <li>Наши клиенты летают выше всех (буквально).</li>
+            <li>Нас любят даже боты, потому что мы всегда на их стороне.</li>
+        </ul>
+    </section>
+
+    <section class="why-us">
+        <h2>---- Почему именно мы? ----</h2>
+        <h2>-------------------------------------</h2>
+        <p>Мы точно знаем, что вам нужно. Даже если вы об этом ещё не догадывались.</p>
+        <p>У нас можно купить шляпу, которая поднимет вашу самооценку. И да, она светится.</p>
+    </section>
+
+    <section class="reviews">
+        <h2>Отзывы наших клиентов</h2>
+        <blockquote>
+            <p>Купил магическую шляпу, теперь соседи меня боятся. Спасибо, Atoom!</p>
+            <footer>— Иван П., волшебник-любитель</footer>
+        </blockquote>
+        <blockquote>
+            <p>Шар предсказаний оказался слишком честным. Сказал мне, что пора менять работу.</p>
+            <footer>— Мария К., фрилансер</footer>
+        </blockquote>
+    </section>
+
+    <div class="icon-container left-icons">
+        <img src="/static/img/telega.png" alt="Telegram Icon" title="Telegram" onclick="window.open('https://t.me/yourchannel', '_blank')">
+        <span class="tooltip">Наш Telegram-канал</span>
+    </div>
+
+    <div class="icon-container right-icons">
+        <img src="/static/img/bot.png" alt="Bot Icon" title="Chat Bot" onclick="toggleDialog()">
+        <span class="tooltip">Вызвать бота</span>
+    </div>
+
+    <div id="bot-dialog" class="dialog">
+        <p>Здравствуйте, я ваш персональный помощник. Я могу ответить на все ваши вопросы, но я слишком ленив, поэтому разбирайтесь сами.</p>
+        <button onclick="toggleDialog()">Закрыть</button>
+    </div>
+</body>
+</html>

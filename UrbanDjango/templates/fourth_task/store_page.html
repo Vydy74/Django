@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type = text/css href = "{% static 'style.css' %}">
+    <title>Atoom - Магазин</title>
+
+
+    <script>
+        function purchaseItem(itemName) {
+            alert(`Купил ${itemName}, молодец!`);
+        }
+    </script>
+    <script>
+        function toggleDialog() {
+            const dialog = document.getElementById('bot-dialog');
+            dialog.style.display = dialog.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Atoom</h1>
+        <div class="sub-title">Магазин</div>
+    </header>
+
+    <nav>
+        <a href="/">Главная страница</a>
+        <a href="/store_page/">Магазин</a>
+        <a href="/basket_page/">Корзина</a>
+        <a href="/contact_page/">Контакты</a>
+    </nav>
+
+    <div class="icon-container left-icons">
+        <img src="/static/img/telega.png" alt="Telegram Icon" onclick="window.open('https://t.me/yourchannel', '_blank')">
+    </div>
+
+    <div class="icon-container right-icons">
+        <img src="/static/img/bot.png" alt="Bot Icon" title="Chat Bot" onclick="toggleDialog()">
+        <span class="tooltip">Вызвать бота</span>
+    </div>
+
+    <div id="bot-dialog" class="dialog">
+        <p>Здравствуйте, я ваш персональный помощник. Я могу ответить на все ваши вопросы, но я слишком ленив, поэтому разбирайтесь сами.</p>
+        <button onclick="toggleDialog()">Закрыть</button>
+    </div>
+
+    <div class="store-container">
+        <!-- Начало списка товаров -->
+
+        {% for product in products %}
+        <div class="product">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <div class="product-description">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p><strong>Стоимость:</strong> {{ product.price }}</p>
+            </div>
+            <button onclick="purchaseItem('{{ product.name }}')">Купить</button>
+        </div>
+        {% endfor %}
+
+        <!-- Конец списка товаров -->
+    </div>
+</body>
+</html>
