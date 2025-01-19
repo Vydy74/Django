@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Base</title>
+
+    <script>
+        function toggleDialog() {
+            const dialog = document.getElementById('bot-dialog');
+            dialog.style.display = dialog.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
+</head>
+<body>
+    <header>
+        <h1>Atoom</h1>
+        <div class="sub-title">Авторизация</div>
+    </header>
+
+    <nav>
+        <a href="/">Главная страница</a>
+        <a href="/store_page/">Магазин</a>
+        <a href="/basket_page/">Корзина</a>
+        <a href="/contact_page/">Контакты</a>
+    </nav>
+
+    <div class="icon-container left-icons">
+        <img src="/static/img/telega.png" alt="Telegram Icon" onclick="window.open('https://t.me/yourchannel', '_blank')">
+    </div>
+
+    <div class="icon-container right-icons">
+        <img src="/static/img/bot.png" alt="Bot Icon" title="Chat Bot" onclick="toggleDialog()">
+        <span class="tooltip">Вызвать бота</span>
+    </div>
+
+    <div id="bot-dialog" class="dialog">
+        <p>Что же вы никак не успокоетесь, ручками сучите. Я вам не попугай, отвечать постоянно одно и то же.</p>
+        <button onclick="toggleDialog()">Закрыть</button>
+    </div>
+
+    <div class="store-container">
+        {% if user_info %}
+            <h2>Добро пожаловать, {{ user_info.username }}!</h2>
+            <p>Возраст: {{ user_info.age }}</p>
+            <p>Email: {{ user_info.email }}</p>
+        {% else %}
+            <p>Пожалуйста, авторизуйтесь.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

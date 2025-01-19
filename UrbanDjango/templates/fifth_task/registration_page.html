@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Registration</title>
+
+    <script>
+        function toggleDialog() {
+            const dialog = document.getElementById('bot-dialog');
+            dialog.style.display = dialog.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+    <style>
+        .registration-form {
+            font-size: 2em;
+        }
+        .registration-form input[type="text"],
+        .registration-form input[type="password"],
+        .registration-form input[type="number"],
+        .registration-form input[type="email"] {
+            width: 100%;
+            font-size: 2em;
+        }
+        .registration-form button {
+            color: #216278;
+            font-size: 2em;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+        .tab.active {
+            background-color: #ccc;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        info.error{
+            width: 100%;
+            font-size: 2em;
+            color: #BF3030;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Atoom</h1>
+        <div class="sub-title">Авторизация</div>
+    </header>
+
+    <nav>
+        <a href="/">Главная страница</a>
+        <a href="/store_page/">Магазин</a>
+        <a href="/basket_page/">Корзина</a>
+        <a href="/contact_page/">Контакты</a>
+    </nav>
+
+    <div class="icon-container left-icons">
+        <img src="/static/img/telega.png" alt="Telegram Icon" onclick="window.open('https://t.me/yourchannel', '_blank')">
+    </div>
+
+    <div class="icon-container right-icons">
+        <img src="/static/img/bot.png" alt="Bot Icon" title="Chat Bot" onclick="toggleDialog()">
+        <span class="tooltip">Вызвать бота</span>
+    </div>
+
+    <div id="bot-dialog" class="dialog">
+        <p>Что же вы никак не успокоетесь, ручками сучите. Я вам не попугай, отвечать постоянно одно и то же.</p>
+        <button onclick="toggleDialog()">Закрыть</button>
+    </div>
+
+    <div class="store-container">
+        <!-- Начало процедуры авторизации -->
+        <h1>Registration</h1>
+        {% if info.error %}
+            <p style="color: red;">{{ info.error }}</p>
+        {% endif %}
+
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('register')">Регистрация</div>
+            <div class="tab" onclick="showTab('login')">Войти</div>
+        </div>
+
+        <div id="register" class="tab-content active registration-form">
+            <form method="post">
+                {% csrf_token %}
+                {% if info.form %}
+                    {{ info.form.as_p }}
+                {% else %}
+                    <div>
+                        <label for="register-username">Введите логин:</label>
+                        <input type="text" id="register-username" name="username" maxlength="30" required>
+                    </div>
+                    <div>
+                        <label for="register-password">Введите пароль:</label>
+                        <input type="password" id="register-password" name="password" minlength="8" required>
+                    </div>
+                    <div>
+                        <label for="register-repeat-password">Повторите пароль:</label>
+                        <input type="password" id="register-repeat-password" name="repeat_password" minlength="8" required>
+                    </div>
+                    <div>
+                        <label for="register-age">Введите свой возраст:</label>
+                        <input type="number" id="register-age" name="age" maxlength="3" required>
+                    </div>
+                    <div>
+                        <label for="register-email">Введите адрес электронной почты:</label>
+                        <input type="email" id="register-email" name="email" required>
+                    </div>
+                {% endif %}
+                <button type="submit">Регистрация</button>
+            </form>
+        </div>
+
+        <div id="login" class="tab-content registration-form">
+            <form method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="login-username">Введите логин:</label>
+                    <input type="text" id="login-username" name="username" maxlength="30" required>
+                </div>
+                <div>
+                    <label for="login-password">Введите пароль:</label>
+                    <input type="password" id="login-password" name="password" minlength="8" required>
+                </div>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+
+        <script>
+            function showTab(tabId) {
+                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+                document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+            }
+        </script>
+        <!-- Конец  -->
+    </div>
+</body>
+</html>
