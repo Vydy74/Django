@@ -9,3 +9,12 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+
+class User(models.Model):
+    username = models.CharField(max_length=30, unique=True)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=128)  # Хранить пароли в зашифрованном виде
+    age = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.username
