@@ -27,7 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGGING = None
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +52,7 @@ INSTALLED_APPS = [
     'task2',
     'task3',
     'task4',
+    'task5',
 
 ]
 
@@ -114,6 +127,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'main_paige'
 
 
 # Static files (CSS, JavaScript, Images)
