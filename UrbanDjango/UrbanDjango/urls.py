@@ -30,7 +30,7 @@ urlpatterns = [
     # path('store_page/', store_page_view),
     # path('basket_page/', basket_page_view),
     # path('contact_page/', contacts_page_view),
-    path('', include('task4.urls', namespace='task4'))
+    path('', include('task1.urls', namespace='task1'))
 ]
 
 if settings.DEBUG:

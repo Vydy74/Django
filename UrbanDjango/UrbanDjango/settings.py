@@ -130,7 +130,7 @@ USE_I18N = True
 USE_TZ = True
 
 LOGIN_URL = 'login'
-LOGOUT_REDIRECT_URL = 'main_paige'
+LOGOUT_REDIRECT_URL = 'main_page'
 
 
 # Static files (CSS, JavaScript, Images)
